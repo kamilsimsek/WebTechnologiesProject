@@ -10,7 +10,6 @@ namespace WebTechnologiesProject.Models
 
         [Required(ErrorMessage = "Bir deger giriniz")]
         public string Name { get; set; }
-        public string Slug { get; set; }
         [Required, MinLength(4,ErrorMessage = "En az 2 karakter uzunlugunda olmalidir")]
         public string Description { get; set; }
 

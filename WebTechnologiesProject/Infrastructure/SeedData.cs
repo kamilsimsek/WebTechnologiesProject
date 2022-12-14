@@ -8,7 +8,7 @@ namespace WebTechnologiesProject.Infrastructure
         public static void SeedDatabase(DataContext context)
         {
             context.Database.Migrate();
-            if(context.Products.Any())
+            if(!context.Products.Any())
             {
                 Category fruits = new Category { Name = "fruits"};
                 Category vegetables = new Category { Name = "vegetables" };
@@ -50,6 +50,7 @@ namespace WebTechnologiesProject.Infrastructure
                         Category = vegetables
                     }
                     );
+                context.SaveChanges();
             }
         }
     }
