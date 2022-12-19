@@ -10,46 +10,55 @@ namespace WebTechnologiesProject.Infrastructure
             context.Database.Migrate();
             if(!context.Products.Any())
             {
-                Category fruits = new Category { Name = "fruits"};
-                Category vegetables = new Category { Name = "vegetables" };
+                Category action = new Category { Name = "Aksiyon", Slug = "action" };
+                Category adventure = new Category { Name = "Macera", Slug = "adventure" };
+                Category scienceFiction = new Category { Name = "Bilim Kurgu", Slug = "scienceFiction" };
+                Category romantic = new Category { Name = "Romantik", Slug = "romantic" };
+                Category animation = new Category { Name = "Animasyon", Slug = "animation" };
+                Category dram = new Category { Name = "Dram", Slug = "dram" };
 
                 context.Products.AddRange(
                     new Product
                     {
-                        Name = "Apples",
-                        Price = 1.50M,
-                        Description = "Red apples",
-                        Category = fruits,
+                        Name = "Avatar",
+                        Slug = "scienceFiction",
+                        Price = 20M,
+                        Description = "Avatar bir bilim kurgu filmidir",
+                        Category = scienceFiction,
                     },
                     new Product
                     {
-                        Name = "Bananas",
-                        Price = 2M,
-                        Description = "Yellow bananas",
-                        Category = fruits
+                        Name = "X-Man",
+                        Slug = "scienceFiction",
+                        Price = 20M,
+                        Description = "X-Man bir aksiyon filmidir",
+                        Category = scienceFiction
                     },
                     new Product
                     {
-                        Name = "Lemons",
-                        Price = 3M,
-                        Description = "Yellow lemons",
-                        Category = fruits
+                        Name = "Arı Maya",
+                        Slug = "animation",
+                        Price = 20M,
+                        Description = "Arı Maya bir animasyon filmidir",
+                        Category = animation,
                     },
                     new Product
                     {
-                        Name = "Cucumbers",
-                        Price = 3M,
-                        Description = "Green cucumbers",
-                        Category = vegetables
+                        Name = "Öğle Güneşinde Yıldızlar",
+                        Slug = "romantic",
+                        Price = 20M,
+                        Description = "Öğle Güneşinde Yıldızlar bir bilim kurgu filmidir",
+                        Category = romantic,
                     },
                     new Product
                     {
-                        Name = "Tomatos",
-                        Price = 3M,
-                        Description = "Red tomatos",
-                        Category = vegetables
+                        Name = "7. Koğuştaki Mucize",
+                        Slug = "dram",
+                        Price = 20M,
+                        Description = "7. Koğuştaki Mucize bir bilim kurgu filmidir",
+                        Category = dram,
                     }
-                    );
+                    ) ;
                 context.SaveChanges();
             }
         }

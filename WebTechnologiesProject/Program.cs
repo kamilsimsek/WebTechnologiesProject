@@ -29,6 +29,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "movies",
+    pattern: "/movies/{categorySlug?}",
+    defaults: new {controller = "Products", action="Index"}
+    );
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

@@ -12,6 +12,7 @@ namespace WebTechnologiesProject.Models
         public string Name { get; set; }
         [Required, MinLength(4,ErrorMessage = "En az 2 karakter uzunlugunda olmalidir")]
         public string Description { get; set; }
+        public string Slug { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(8,2)")]
