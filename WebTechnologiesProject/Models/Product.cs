@@ -17,11 +17,17 @@ namespace WebTechnologiesProject.Models
         [Required]
         [Column(TypeName = "decimal(8,2)")]
         public decimal Price { get; set; }
-
+        [Required, Range(1, int.MaxValue, ErrorMessage = "Bir kategori secmelisiniz")]
         public int CategoryId { get; set; }
+
+        
         public Category Category { get; set; }
 
         public string Image { get; set; }
+
+        [NotMapped]
+        [FileExtensions]
+        public IFormFile ImageUpload { get; set; }
 
     }
 }
