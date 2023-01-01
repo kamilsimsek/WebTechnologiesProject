@@ -1,14 +1,23 @@
 ﻿@model IEnumerable<Category>
 
-	<ul class="list-group">
-		<li class="list-group-item">
-			<a class="nav-link text-dark" asp-controller="Products" asp-action="Index" asp-route-CategorySlug="">All Products</a>
-		</li>
+	<link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
 
-		@foreach(var item in Model)
-		{
-			<li class="list-group-item">
-				<a class="nav-link-text-dark" asp-controller="Products" asp-action="Index" asp-route-categorySlug="@item.Slug" >@item.Name</a>
-			</li>
-		}
-	</ul>
+<div style="width: 600px; padding-left:50px;">
+	<div class="">
+		<div class="col-sm-4">
+			<!-- Category -->
+			<div class="single category">
+				<h3 class="side-title">Category</h3>
+				<ul class="list-unstyled">
+					<li><a class="nav-link-text-white" asp-controller="Products" asp-action="Index" asp-route-CategorySlug="">TUM KITAPLAR</a></li>
+					@foreach (var item in Model)
+					{
+						<li><a class="nav-link-text-white" asp-controller="Products" asp-action="Index" asp-route-categorySlug="@item.Slug">@item.Name</a></li>
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+

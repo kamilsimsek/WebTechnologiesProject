@@ -16,3 +16,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+.opacity-80{
+    opacity:0.9;
+}
+
+.menu-bar {
+    background-image:linear-gradient(-90deg,#d38312,#a83279);
+}

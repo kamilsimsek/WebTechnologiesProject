@@ -6,26 +6,51 @@
 	<title>@ViewData["Title"] - WebTechnologiesProject</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/WebTechnologiesProject.styles.css" asp-append-version="true" />
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<nav class="navbar navbar-expand-sm navbar-light menu-bar border-bottom box-shadow mb-3 opacity-80 m-auto">
 			<div class="container-fluid">
-				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebTechnologiesProject</a>
+				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Kitaps</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 						aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-					<ul class="navbar-nav flex-grow-1">
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-						</li>
-					</ul>
+					<div class="container">
+						<ul class="navbar-nav flex-grow-1 m-lg-auto">
+							<li class="nav-item">
+								<a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+							</li
+							@if (User.Identity?.IsAuthenticated ?? false)
+							{
+
+								@if (User.IsInRole("Admin"))
+								{
+									<li class="nav-item">
+										<a class="btn text-white nav-link" asp-area="Admin" asp-controller="Products" asp-action="Index">Admin Room</a>
+									</li>
+								}
+							}
+							@if(!(User.Identity?.IsAuthenticated ?? false))
+							{
+								<li class="nav-item">
+									<a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Oturum Ac</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+								</li>
+							}	
+							@if(User.Identity?.IsAuthenticated ?? false){
+								<li class="nav-item">
+									<a class="btn text-white nav-link" asp-controller="Account" asp-action="Logout">@User.Identity.Name Çıkış Yap</a>
+								</li>
+							}
+
+						</ul>
+					</div>
 				</div>
 			</div>
 		</nav>
@@ -33,9 +58,9 @@
 	<div class="container">
 		<main role="main" class="pb-3">
 			<div class="row">
-				<div class="col-3">
-					<vc:categories />
-					<div class="bg-success mt-3 p-3 text-white">
+				<div class="col-3 menu-bar" style="width:300px; margin-left:-300px; border:1px solid white; margin-top:-10px">
+					<vc:categories/>
+					<div class="p-3 menu-bar text-white">
 						<vc:cart />
 					</div>
 				</div>
